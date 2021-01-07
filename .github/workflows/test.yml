@@ -30,11 +30,13 @@ jobs:
         sudo apt-get -y install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd fakeroot \
         cpio git python-docutils gettext automake autopoint texinfo build-essential help2man \
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
-        wget -O /opt/images/ColorizeStable_gen.pth https://www.dropbox.com/s/usf7uifrctqw9rl/ColorizeStable_gen.pth?dl=0
+        mkdir /opt/test
+        cd /opt/test
+        wget https://www.dropbox.com/s/usf7uifrctqw9rl/ColorizeStable_gen.pth?dl=0
 
     - name : Upload packages as zip
       uses: actions/upload-artifact@master
       if: always()
       with:
         name: testbuild
-        path: /opt/images
+        path: /opt/test
